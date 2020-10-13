@@ -11,7 +11,6 @@ class ProductoController extends Controller{
     function listarProductos(){
         
         $productos = array();
-        
         $res = $this->model->obtenerProductos();
         
         if($res->rowCount()){
@@ -58,18 +57,18 @@ class ProductoController extends Controller{
     }
 
     function crearProducto($item){
-        $this->model->nuevoProducto($item);
-        $this->response(true,"Nuevo producto registrado");
+        $res = $this->model->nuevoProducto($item);
+        $this->response(true,"Nuevo producto registrado", $res);
     }
 
     function actualizarProducto($item){
-        $this->model->actualizarProducto($item);
-        $this->response(true,"Producto actualizado");
+        $res = $this->model->actualizarProducto($item);
+        $this->response(true,"Producto actualizado", $res);
     }
 
     function eliminarProducto($id){
-        $this->model->eliminarProducto($id);
-        $this->response(true,"Producto eliminado");
+        $res = $this->model->eliminarProducto($id);
+        $this->response(true,"Producto eliminado", $res);
     }
 
 }

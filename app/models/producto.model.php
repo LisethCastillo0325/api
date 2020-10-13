@@ -47,9 +47,9 @@ class ProductoModel extends Model{
         return $res;
     }
 
-    function eliminarProducto($item){
+    function eliminarProducto($id){
         $query = $this->connect()->prepare('DELETE FROM producto WHERE id = :id');
-        $res = $query->execute(['id' => trim($item['id'])]);
+        $res = $query->execute(['id' => trim($id)]);
         return $res;
     }
 

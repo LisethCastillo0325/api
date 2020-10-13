@@ -21,9 +21,10 @@ class App {
             if(! method_exists($controller, $nombreFunction)){
                 $controller->response(false, "recurso no encontrado [$nombreFunction]", null, 404);
             }else{
+                
                 // Obtener los datos publicados
                 $postdata = file_get_contents("php://input");
-
+                
                 if(isset($postdata) && !empty($postdata))
                 {
                     // Extraer los datos.
@@ -38,7 +39,7 @@ class App {
                         $controller->response(false, "El id es incorrecto [$id]", null, 404);
                     }
                 }else{
-                    $controller->$nombreFunction();
+                    $controller->$nombreFunction(null);
                 }
             }
         }
